@@ -4,8 +4,10 @@
   "description": "",
   "license": "",
   "scripts": {
-    "build": "remix build",
-    "dev": "remix dev",
+    "build": "tailwindcss --output ./app/styles/tailwind.css --config ./config/tailwind.js --minify && remix build",
+    "dev": "concurrently \"npm:dev:tailwind\" \"npm:dev:web\"",
+    "dev:tailwind": "tailwindcss --output ./app/styles/tailwind.css --config ./config/tailwind.js --watch",
+    "dev:web": "remix dev",
     "postinstall": "remix setup node",
     "start": "remix-serve build"
   },
